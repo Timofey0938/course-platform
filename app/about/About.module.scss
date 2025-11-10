@@ -1,0 +1,104 @@
+// app/about/About.module.scss
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+
+    @include desktop {
+        padding: 3rem 2rem 6rem;
+    };
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $text-primary;
+
+    @include mobile {
+        font-size: 2.25rem;
+    };
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: $text-secondary;
+    line-height: 1.6;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.section {
+    &Title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: $text-primary;
+    }
+}
+
+.text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $text-secondary;
+    margin-bottom: 1rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    };
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    transition: $transition;
+
+    &:hover {
+        border-color: $accent-blue;
+        transform: translateY(-2px);
+    };
+
+    &Icon {
+        color: $accent-blue;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-top: 0.25rem;
+        flex-shrink: 0;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: $text-primary;
+    }
+
+    p {
+        color: $text-secondary;
+        line-height: 1.5;
+        margin: 0;
+    }
+}

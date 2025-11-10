@@ -1,0 +1,66 @@
+@import 'utils/variables';
+@import 'utils/mixins';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: $bg-primary;
+    color-scheme: dark;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+    background: $bg-primary;
+    color: $text-primary;
+    min-height: 100vh;
+    line-height: 1.5;
+    overflow-x: hidden;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+// Selection (как в Dark Modern)
+::selection {
+    background: rgba($accent-blue, 0.3);
+    color: inherit;
+}
+
+// Scrollbar (Dark Modern style)
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3c444e;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #49515c;
+}
+
+// Focus outline (Dark Modern style)
+*:focus-visible {
+    outline: 2px solid $accent-blue;
+    outline-offset: 1px;
+    border-radius: 2px;
+}
+
+// Links
+a {
+    color: $accent-blue;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    };
+}
