@@ -17,27 +17,34 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const supabase = createClient();
 
     useEffect(() => {
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((event, session) => {
-            setUser(session?.user ?? null);
-            setIsLoading(false);
-        });
+        try {
+            const supabase = createClient();
+            
+            const {
+                data: { subscription },
+            } = supabase.auth.onAuthStateChange((event, session) => {
+                setUser(session?.user ?? null);
+                setIsLoading(false);
+            });
 
-        // Получаем текущую сессию
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setUser(session?.user ?? null);
-            setIsLoading(false);
-        });
+            // Получаем текущую сессию
+            supabase.auth.getSession().then(({ data: { session } }) => {
+                setUser(session?.user ?? null);
+                setIsLoading(false);
+            });
 
-        return () => subscription.unsubscribe();
-    }, [supabase]);
+            return () => subscription.unsubscribe();
+        } catch (error) {
+            console.error('Auth initialization error:', error);
+            setIsLoading(false);
+        }
+    }, []);
 
     const signInWithGoogle = async () => {
         try {
+            const supabase = createClient();
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
@@ -52,6 +59,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const signOut = async () => {
         try {
+            const supabase = createClient();
             const { error } = await supabase.auth.signOut();
             if (error) throw error;
         } catch (error) {
