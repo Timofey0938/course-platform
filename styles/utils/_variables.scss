@@ -1,89 +1,24 @@
 // styles/utils/_variables.scss
 // VS Code Online Colors
-$bg-primary: #181818;                    // Основной фон - как в боковом меню
-$bg-secondary: #1f1f1f;                  // Вторичный фон
-$bg-tertiary: #252526;                   // Третичный фон
-$bg-card: #1f1f1f;                       // Карточки
+$bg-primary: #181818;
+$bg-secondary: #1f1f1f;
+$bg-tertiary: #252526;
+$bg-card: #1f1f1f;
 
-// Text colors
-$text-primary: #ffffff;                  // Белый текст для контраста
-$text-secondary: #cccccc;                // Светло-серый
-$text-muted: #888888;                    // Серый
+$text-primary: #ffffff;
+$text-secondary: #cccccc;
+$text-muted: #888888;
 
-// Акцентные цвета из VS Code Online
-$accent-blue: #0078d4;                   // Яркий синий кнопок
-$accent-purple: #c586c0;                 // Фиолетовый
-$accent-cyan: #4ec9b0;                   // Циановый
-$accent-green: #4dc869;                  // Зеленый
-$accent-yellow: #dcdcaa;                 // Желтый
-$accent-orange: #ce9178;                 // Оранжевый
+$accent-blue: #0078d4;
+$accent-purple: #c586c0;
+$accent-cyan: #4ec9b0;
+$accent-green: #4dc869;
+$accent-yellow: #dcdcaa;
+$accent-orange: #ce9178;
 
-// UI colors
-$border-color: #3c3c3c;                  // Границы
-$border-hover: #464647;                  // Границы при наведении
+$border-color: #3c3c3c;
+$border-hover: #464647;
 
-// Дополнительные переменные
 $border-radius: 6px;
 $transition: all 0.2s ease;
 $shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
-
-// Миксины
-@mixin gradient-text {
-    background: linear-gradient(135deg, $accent-blue, lighten($accent-blue, 10%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-};
-
-@mixin vscode-button {
-    background: $accent-blue;
-    color: white;
-    border: none;
-    border-radius: $border-radius;
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: $transition;
-    
-    &:hover {
-        background: lighten($accent-blue, 8%);
-        transform: translateY(-1px);
-        box-shadow: 0 6px 16px rgba(0, 120, 212, 0.3);
-    };
-};
-
-@mixin vscode-card {
-    background: $bg-card;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    transition: $transition;
-    
-    &:hover {
-        border-color: $accent-blue;
-        box-shadow: $shadow-hover;
-    };
-};
-
-@mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-};
-
-@mixin mobile {
-    @media (max-width: 767px) {
-        @content;
-    };
-}
-
-@mixin tablet {
-    @media (min-width: 768px) and (max-width: 1023px) {
-        @content;
-    };
-}
-
-@mixin desktop {
-    @media (min-width: 1024px) {
-        @content;
-    };
-}

@@ -1,47 +1,43 @@
-// app/Home.module.scss
-@import '../styles/utils/variables';
-@import '../styles/utils/mixins';
+@use '../styles/utils/variables' as vars;
+@use '../styles/utils/mixins' as mix;
+@use "sass:color";
 
 .hero {
-    background: linear-gradient(135deg, $bg-primary 0%, $bg-secondary 100%);
-    padding: 6rem 1rem;
     text-align: center;
+    padding: 5rem 1rem 3rem;
+    background: linear-gradient(135deg, vars.$bg-primary 0%, vars.$bg-secondary 100%);
 
-    @include desktop {
-        padding: 8rem 2rem;
+    @include mix.desktop {
+        padding: 6rem 2rem 4rem;
     };
 }
 
-.heroContent {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 .heroTitle {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 1.5rem;
     line-height: 1.1;
     letter-spacing: -0.02em;
 
-    @include mobile {
-        font-size: 2.5rem;
+    @include mix.mobile {
+        font-size: 2.25rem;
     };
 }
 
 .gradientText {
-    @include gradient-text;
+    @include mix.gradient-text;
 }
 
 .heroDescription {
-    font-size: 1.3rem;
-    color: $text-secondary;
-    max-width: 600px;
-    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: vars.$text-secondary;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
     line-height: 1.6;
+    font-weight: 400;
 
-    @include mobile {
-        font-size: 1.1rem;
+    @include mix.mobile {
+        font-size: 1rem;
         padding: 0 1rem;
     };
 }
@@ -52,27 +48,22 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    @include mobile {
+    @include mix.mobile {
         flex-direction: column;
         align-items: center;
     };
 }
 
 .primaryButton {
-    background: $accent-blue;
-    color: white;
+    @include mix.vscode-button;
     text-decoration: none;
     padding: 1rem 2rem;
-    border-radius: $border-radius;
-    font-weight: 600;
     font-size: 1.1rem;
-    transition: $transition;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 
     &:hover {
-        background: lighten($accent-blue, 8%);
         transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(0, 120, 212, 0.3);
     };
@@ -80,26 +71,26 @@
 
 .secondaryButton {
     background: transparent;
-    color: $text-primary;
+    color: vars.$text-primary;
     text-decoration: none;
     padding: 1rem 2rem;
-    border-radius: $border-radius;
+    border-radius: vars.$border-radius;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: $transition;
-    border: 2px solid $border-color;
+    transition: vars.$transition;
+    border: 2px solid vars.$border-color;
 
     &:hover {
-        border-color: $accent-blue;
-        color: $accent-blue;
+        border-color: vars.$accent-blue;
+        color: vars.$accent-blue;
     };
 }
 
 .featuresSection {
     padding: 6rem 1rem;
-    background: $bg-card;
+    background: vars.$bg-card;
 
-    @include desktop {
+    @include mix.desktop {
         padding: 8rem 2rem;
     };
 }
@@ -114,9 +105,9 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    color: $text-primary;
+    color: vars.$text-primary;
 
-    @include mobile {
+    @include mix.mobile {
         font-size: 2rem;
     };
 }
@@ -128,21 +119,21 @@
 }
 
 .featureCard {
-    background: $bg-secondary;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
+    background: vars.$bg-secondary;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius;
     padding: 2rem;
     text-align: center;
-    transition: $transition;
+    transition: vars.$transition;
 
     &:hover {
         transform: translateY(-4px);
-        border-color: $accent-blue;
-        box-shadow: $shadow-hover;
+        border-color: vars.$accent-blue;
+        box-shadow: vars.$shadow-hover;
     };
 
     .featureIcon {
-        color: $accent-blue;
+        color: vars.$accent-blue;
         width: 3rem;
         height: 3rem;
         margin-bottom: 1rem;
@@ -152,11 +143,11 @@
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 1rem;
-        color: $text-primary;
+        color: vars.$text-primary;
     }
 
     p {
-        color: $text-secondary;
+        color: vars.$text-secondary;
         line-height: 1.6;
     }
 }
@@ -164,7 +155,7 @@
 .coursesSection {
     padding: 6rem 1rem;
 
-    @include desktop {
+    @include mix.desktop {
         padding: 8rem 2rem;
     };
 }
@@ -176,19 +167,19 @@
 
 .sectionDescription {
     font-size: 1.2rem;
-    color: $text-secondary;
+    color: vars.$text-secondary;
     max-width: 500px;
     margin: 0 auto 2rem;
 }
 
 .viewAllLink {
-    color: $accent-blue;
+    color: vars.$accent-blue;
     text-decoration: none;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: $transition;
+    transition: vars.$transition;
 
     &:hover {
         gap: 0.75rem;
@@ -200,16 +191,16 @@
     gap: 2rem;
     margin: 0 auto;
 
-    @include mobile {
+    @include mix.mobile {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     };
 
-    @include tablet {
+    @include mix.tablet {
         grid-template-columns: repeat(2, 1fr);
     };
 
-    @include desktop {
+    @include mix.desktop {
         grid-template-columns: repeat(3, 1fr);
     };
 }

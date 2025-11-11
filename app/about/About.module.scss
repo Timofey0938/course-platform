@@ -1,13 +1,12 @@
-// app/about/About.module.scss
-@import '../../styles/utils/variables';
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/variables' as vars;
+@use '../../styles/utils/mixins' as mix;
 
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
 
-    @include desktop {
+    @include mix.desktop {
         padding: 3rem 2rem 6rem;
     };
 }
@@ -21,16 +20,16 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: $text-primary;
+    color: vars.$text-primary;
 
-    @include mobile {
+    @include mix.mobile {
         font-size: 2.25rem;
     };
 }
 
 .subtitle {
     font-size: 1.3rem;
-    color: $text-secondary;
+    color: vars.$text-secondary;
     line-height: 1.6;
 }
 
@@ -45,14 +44,14 @@
         font-size: 1.8rem;
         font-weight: 600;
         margin-bottom: 1.5rem;
-        color: $text-primary;
+        color: vars.$text-primary;
     }
 }
 
 .text {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: $text-secondary;
+    color: vars.$text-secondary;
     margin-bottom: 1rem;
 
     &:last-child {
@@ -71,18 +70,18 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 1.5rem;
-    background: $bg-card;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    transition: $transition;
+    background: vars.$bg-card;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius;
+    transition: vars.$transition;
 
     &:hover {
-        border-color: $accent-blue;
+        border-color: vars.$accent-blue;
         transform: translateY(-2px);
     };
 
     &Icon {
-        color: $accent-blue;
+        color: vars.$accent-blue;
         width: 1.5rem;
         height: 1.5rem;
         margin-top: 0.25rem;
@@ -93,11 +92,11 @@
         font-size: 1.2rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        color: $text-primary;
+        color: vars.$text-primary;
     }
 
     p {
-        color: $text-secondary;
+        color: vars.$text-secondary;
         line-height: 1.5;
         margin: 0;
     }

@@ -1,16 +1,16 @@
+// components/Header/Header.tsx
 'use client';
 
 import { BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { UserSection } from './UserSection/UserSection';
 import styles from './Header.module.scss';
 
 export function Header() {
     const pathname = usePathname();
-
-    const handleLogin = () => {
-        console.log('Login clicked'); // Заглушка
-    };
+    const { user, signInWithGoogle, isLoading } = useAuth();
 
     const isActive = (path: string) => {
         return pathname === path ? styles.active : '';
@@ -38,9 +38,18 @@ export function Header() {
                         >
                             О проекте
                         </Link>
-                        <button className={styles.loginBtn} onClick={handleLogin}>
-                            Войти
-                        </button>
+                        
+                        {user ? (
+                            <UserSection />
+                        ) : (
+                            <button 
+                                className={styles.loginBtn} 
+                                onClick={signInWithGoogle}
+                                disabled={isLoading}
+                            >
+                                {isLoading ? 'Загрузка...' : 'Войти с Google'}
+                            </button>
+                        )}
                     </nav>
                 </div>
             </div>

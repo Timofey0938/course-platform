@@ -1,10 +1,10 @@
 // components/Header/Header.module.scss
-@import '../../styles/utils/variables';
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/variables' as vars;
+@use '../../styles/utils/mixins' as mix;
 
 .header {
-    border-bottom: 1px solid $border-color;
-    background: $bg-secondary;
+    border-bottom: 1px solid vars.$border-color;
+    background: vars.$bg-secondary;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -15,7 +15,7 @@
     margin: 0 auto;
     padding: 0 1rem;
     
-    @include desktop {
+    @include mix.desktop {
         padding: 0 2rem;
     };
 }
@@ -40,7 +40,7 @@
 }
 
 .logoIcon {
-    color: $accent-blue;
+    color: vars.$accent-blue;
     width: 1.25rem;
     height: 1.25rem;
 }
@@ -48,49 +48,41 @@
 .logoText {
     font-size: 1.1rem;
     font-weight: 600;
-    color: $text-primary;
+    color: vars.$text-primary;
 }
 
 .nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
+
+    @include mix.mobile {
+        gap: 1rem;
+    };
 }
 
 .navLink {
-    color: $text-secondary;
+    color: vars.$text-secondary;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
     transition: all 0.2s ease;
     padding: 0.5rem 0.75rem;
-    border-radius: $border-radius;
+    border-radius: vars.$border-radius;
 
     &:hover {
-        color: $text-primary;
-        background: $bg-tertiary;
+        color: vars.$text-primary;
+        background: vars.$bg-tertiary;
     };
 
     &.active {
-        color: $accent-blue;
-        background: rgba($accent-blue, 0.1);
+        color: vars.$accent-blue;
+        background: rgba(vars.$accent-blue, 0.1);
     };
 }
 
 .loginBtn {
-    background: $accent-blue;
-    color: white;
-    border: none;
-    padding: 0.5rem 1.25rem;
-    border-radius: $border-radius;
-    font-weight: 500;
+    @include mix.vscode-button;
     font-size: 0.9rem;
-    cursor: pointer;
-    transition: $transition;
-
-    &:hover {
-        background: lighten($accent-blue, 8%);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
-    };
+    padding: 0.5rem 1.25rem;
 }

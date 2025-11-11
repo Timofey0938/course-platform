@@ -1,12 +1,12 @@
-@import '../../styles/utils/variables';
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/variables' as vars;
+@use '../../styles/utils/mixins' as mix;
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
 
-    @include desktop {
+    @include mix.desktop {
         padding: 3rem 2rem 6rem;
     };
 }
@@ -20,16 +20,16 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: $text-primary;
+    color: vars.$text-primary;
 
-    @include mobile {
+    @include mix.mobile {
         font-size: 2.25rem;
     };
 }
 
 .description {
     font-size: 1.2rem;
-    color: $text-secondary;
+    color: vars.$text-secondary;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -40,16 +40,16 @@
     gap: 2rem;
     margin: 0 auto;
 
-    @include mobile {
+    @include mix.mobile {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     };
 
-    @include tablet {
+    @include mix.tablet {
         grid-template-columns: repeat(2, 1fr);
     };
 
-    @include desktop {
+    @include mix.desktop {
         grid-template-columns: repeat(3, 1fr);
     };
 }
