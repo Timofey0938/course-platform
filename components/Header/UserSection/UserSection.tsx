@@ -7,9 +7,9 @@ import { useEffect, useState } from 'react';
 import styles from './UserSection.module.scss';
 
 interface UserProfile {
-    displayName: string | null;
+    displayName: string;
     avatarUrl: string | null;
-    email: string | null;
+    email: string;
 }
 
 export function UserSection() {
@@ -22,8 +22,8 @@ export function UserSection() {
             const userMetadata = user.user_metadata;
             setUserProfile({
                 displayName: userMetadata.full_name || userMetadata.name || user.email?.split('@')[0] || 'Пользователь',
-                avatarUrl: userMetadata.avatar_url || userMetadata.picture,
-                email: user.email
+                avatarUrl: userMetadata.avatar_url || userMetadata.picture || null,
+                email: user.email || 'Email не указан'
             });
         }
     }, [user]);
@@ -46,12 +46,12 @@ export function UserSection() {
                     {userProfile.avatarUrl ? (
                         <img 
                             src={userProfile.avatarUrl} 
-                            alt={userProfile.displayName || 'Аватар'}
+                            alt={userProfile.displayName}
                             className={styles.avatarImage}
                         />
                     ) : (
                         <span className={styles.avatarFallback}>
-                            {getInitials(userProfile.displayName || 'U')}
+                            {getInitials(userProfile.displayName)}
                         </span>
                     )}
                 </div>
