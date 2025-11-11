@@ -8,6 +8,7 @@ import { User } from '@supabase/supabase-js';
 interface AuthContextType {
     user: User | null;
     isLoading: boolean;
+    isConfigured: boolean;
     signInWithGoogle: () => Promise<void>;
     signOut: () => Promise<void>;
 }
@@ -17,29 +18,41 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isConfigured, setIsConfigured] = useState(true);
 
     useEffect(() => {
-        try {
-            const supabase = createClient();
-            
-            const {
-                data: { subscription },
-            } = supabase.auth.onAuthStateChange((event, session) => {
+        const initializeAuth = async () => {
+            try {
+                const supabase = createClient();
+                
+                // Проверяем что клиент рабочий
+                if (!supabase.auth?.getUser) {
+                    setIsConfigured(false);
+                    setIsLoading(false);
+                    return;
+                }
+
+                const {
+                    data: { subscription },
+                } = supabase.auth.onAuthStateChange((event, session) => {
+                    setUser(session?.user ?? null);
+                    setIsLoading(false);
+                });
+
+                // Получаем текущую сессию
+                const { data: { session } } = await supabase.auth.getSession();
                 setUser(session?.user ?? null);
                 setIsLoading(false);
-            });
 
-            // Получаем текущую сессию
-            supabase.auth.getSession().then(({ data: { session } }) => {
-                setUser(session?.user ?? null);
+                return () => subscription.unsubscribe();
+            } catch (error) {
+                console.error('Auth initialization error:', error);
+                setIsConfigured(false);
                 setIsLoading(false);
-            });
+            }
+        };
 
-            return () => subscription.unsubscribe();
-        } catch (error) {
-            console.error('Auth initialization error:', error);
-            setIsLoading(false);
-        }
+        initializeAuth();
     }, []);
 
     const signInWithGoogle = async () => {
@@ -54,6 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             if (error) throw error;
         } catch (error) {
             console.error('Error signing in with Google:', error);
+            alert('Ошибка входа. Проверьте консоль для подробностей.');
         }
     };
 
@@ -68,7 +82,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, isLoading, signInWithGoogle, signOut }}>
+        <AuthContext.Provider value={{ 
+            user, 
+            isLoading, 
+            isConfigured,
+            signInWithGoogle, 
+            signOut 
+        }}>
             {children}
         </AuthContext.Provider>
     );
