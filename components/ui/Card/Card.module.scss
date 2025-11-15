@@ -1,0 +1,53 @@
+// components/ui/Card/Card.module.scss
+@use '../../../styles/utils/variables' as vars;
+@use '../../../styles/utils/mixins' as mix;
+@use "sass:color";
+
+.card {
+    border-radius: vars.$border-radius;
+    transition: vars.$transition;
+    background: vars.$bg-card;
+}
+
+// Variants
+.default {
+    border: 1px solid vars.$border-color;
+}
+
+.outlined {
+    border: 1px solid vars.$border-color;
+    background: transparent;
+}
+
+.elevated {
+    border: 1px solid vars.$border-color;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+// Padding
+.padding-none {
+    padding: 0;
+}
+
+.padding-sm {
+    padding: 1rem;
+}
+
+.padding-md {
+    padding: 1.5rem;
+}
+
+.padding-lg {
+    padding: 2rem;
+}
+
+// Hover effect
+.hover {
+    cursor: pointer;
+    
+    &:hover {
+        border-color: vars.$accent-blue;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+}

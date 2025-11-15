@@ -1,0 +1,17 @@
+// components/ui/ToastContainer/ToastContainer.module.scss
+@use '../../../styles/utils/variables' as vars;
+@use '../../../styles/utils/mixins' as mix;
+
+.container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    max-width: 400px;
+    
+    @include mix.mobile {
+        left: 1rem;
+        right: 1rem;
+        max-width: none;
+    }
+}

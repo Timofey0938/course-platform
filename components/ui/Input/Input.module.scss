@@ -1,0 +1,96 @@
+// components/ui/Input/Input.module.scss
+@use '../../../styles/utils/variables' as vars;
+@use '../../../styles/utils/mixins' as mix;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-weight: 600;
+    color: vars.$text-primary;
+    font-size: 0.9rem;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.input {
+    width: 100%;
+    background: vars.$bg-tertiary;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius;
+    padding: 0.75rem 1rem;
+    color: vars.$text-primary;
+    font-size: 1rem;
+    transition: vars.$transition;
+    font-family: inherit;
+    
+    &:focus {
+        outline: none;
+        border-color: vars.$accent-blue;
+        box-shadow: 0 0 0 2px rgba(vars.$accent-blue, 0.1);
+    }
+    
+    &::placeholder {
+        color: vars.$text-muted;
+    }
+    
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    
+    &.withIcon {
+        padding-left: 2.5rem;
+    }
+    
+    &.error {
+        border-color: vars.$accent-red;
+        
+        &:focus {
+            border-color: vars.$accent-red;
+            box-shadow: 0 0 0 2px rgba(vars.$accent-red, 0.1);
+        }
+    }
+    
+    // Стили для textarea
+    &.textarea {
+        resize: vertical;
+        min-height: 100px;
+        line-height: 1.5;
+    }
+}
+
+.icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    color: vars.$text-muted;
+    pointer-events: none;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 1.25rem;
+}
+
+.errorText {
+    color: vars.$accent-red;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.helperText {
+    color: vars.$text-muted;
+    font-size: 0.8rem;
+}

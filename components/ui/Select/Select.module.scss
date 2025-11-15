@@ -1,0 +1,92 @@
+// components/ui/Select/Select.module.scss
+@use '../../../styles/utils/variables' as vars;
+@use '../../../styles/utils/mixins' as mix;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-weight: 600;
+    color: vars.$text-primary;
+    font-size: 0.9rem;
+}
+
+.selectWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select {
+    width: 100%;
+    background: vars.$bg-tertiary;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    color: vars.$text-primary;
+    font-size: 1rem;
+    transition: vars.$transition;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    
+    &:focus {
+        outline: none;
+        border-color: vars.$accent-blue;
+        box-shadow: 0 0 0 2px rgba(vars.$accent-blue, 0.1);
+    }
+    
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    
+    &.error {
+        border-color: vars.$accent-red;
+        
+        &:focus {
+            border-color: vars.$accent-red;
+            box-shadow: 0 0 0 2px rgba(vars.$accent-red, 0.1);
+        }
+    }
+    
+    option {
+        background: vars.$bg-secondary;
+        color: vars.$text-primary;
+        
+        &:disabled {
+            color: vars.$text-muted;
+        }
+    }
+}
+
+.chevron {
+    position: absolute;
+    right: 0.75rem;
+    color: vars.$text-muted;
+    pointer-events: none;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 1.25rem;
+}
+
+.errorText {
+    color: vars.$accent-red;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.helperText {
+    color: vars.$text-muted;
+    font-size: 0.8rem;
+}

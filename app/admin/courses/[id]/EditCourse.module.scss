@@ -1,0 +1,61 @@
+// app/admin/courses/[id]/EditCourse.module.scss
+@use '../../../../styles/utils/variables' as vars;
+@use '../../../../styles/utils/mixins' as mix;
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    @include mix.desktop {
+        padding: 3rem 2rem;
+    };
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.backButton {
+    margin-bottom: 1rem;
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: vars.$text-primary;
+    margin-bottom: 0.5rem;
+
+    @include mix.mobile {
+        font-size: 2rem;
+    };
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: vars.$text-secondary;
+}
+
+.serverError {
+    margin-bottom: 2rem;
+}
+
+.unsavedWarning {
+    margin-bottom: 2rem;
+}
+
+.errorAlert {
+    margin-bottom: 2rem;
+}
+
+.loading {
+    text-align: center;
+    color: vars.$text-secondary;
+    font-size: 1.1rem;
+    padding: 3rem;
+}

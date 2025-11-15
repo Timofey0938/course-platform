@@ -1,0 +1,123 @@
+// components/ui/Toast/Toast.module.scss
+@use '../../../styles/utils/variables' as vars;
+@use '../../../styles/utils/mixins' as mix;
+
+.toast {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: vars.$border-radius;
+    border: 1px solid;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    animation: slideIn 0.3s ease-out;
+    
+    &:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.icon {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.text {
+    flex: 1;
+    min-width: 0;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+    color: inherit;
+}
+
+.message {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: inherit;
+    margin: 0;
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: vars.$transition;
+    flex-shrink: 0;
+    opacity: 0.7;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 1;
+    }
+}
+
+// Variants
+.success {
+    background: rgba(vars.$accent-green, 0.1);
+    border-color: rgba(vars.$accent-green, 0.3);
+    color: vars.$accent-green;
+}
+
+.error {
+    background: rgba(vars.$accent-red, 0.1);
+    border-color: rgba(vars.$accent-red, 0.3);
+    color: vars.$accent-red;
+}
+
+.warning {
+    background: rgba(vars.$accent-yellow, 0.1);
+    border-color: rgba(vars.$accent-yellow, 0.3);
+    color: vars.$accent-yellow;
+}
+
+.info {
+    background: rgba(vars.$accent-blue, 0.1);
+    border-color: rgba(vars.$accent-blue, 0.3);
+    color: vars.$accent-blue;
+}
+
+// Animations
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+// Для удаления с анимацией
+.toast.leaving {
+    animation: slideOut 0.3s ease-in forwards;
+}

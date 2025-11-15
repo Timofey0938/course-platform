@@ -1,0 +1,68 @@
+// app/admin/courses/components/CourseForm/CourseForm.module.scss
+@use '../../../../../styles/utils/variables' as vars;
+@use '../../../../../styles/utils/mixins' as mix;
+
+.form {
+    background: vars.$bg-card;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius;
+    padding: 2rem;
+}
+
+.formGrid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    @include mix.tablet {
+        grid-template-columns: repeat(2, 1fr);
+    };
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.checkboxSection {
+    margin-bottom: 2rem;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+}
+
+.checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+.checkboxText {
+    color: vars.$text-primary;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.helpText {
+    font-size: 0.8rem;
+    color: vars.$text-muted;
+    margin: 0;
+    padding-left: 2rem;
+}
+
+.formActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding-top: 2rem;
+    border-top: 1px solid vars.$border-color;
+}

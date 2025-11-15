@@ -1,7 +1,6 @@
 // app/page.tsx
 'use client';
 
-import { Header } from '@/components/Header/Header';
 import { CourseCard } from '@/components/CourseCard/CourseCard';
 import { mockCourses } from '@/lib/mock-data';
 import { Globe, Users, BookOpen, ArrowRight, Code2 } from 'lucide-react';
@@ -13,8 +12,6 @@ export default function HomePage() {
 
     return (
         <>
-            <Header />
-            
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.heroContent}>

@@ -1,16 +1,18 @@
 // components/Header/Header.tsx
 'use client';
 
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { useUserRole } from '@/hooks/useUserRole';
 import { UserSection } from './UserSection/UserSection';
 import styles from './Header.module.scss';
 
 export function Header() {
     const pathname = usePathname();
     const { user, signInWithGoogle, isLoading } = useAuth();
+    const { isAdmin } = useUserRole();
 
     const isActive = (path: string) => {
         return pathname === path ? styles.active : '';
@@ -38,6 +40,16 @@ export function Header() {
                         >
                             О проекте
                         </Link>
+                        
+                        {user && isAdmin && (
+                            <Link 
+                                href="/admin" 
+                                className={`${styles.navLink} ${isActive('/admin')}`}
+                            >
+                                <Shield size={16} />
+                                Админка
+                            </Link>
+                        )}
                         
                         {user ? (
                             <UserSection />

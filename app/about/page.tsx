@@ -1,12 +1,10 @@
 // app/about/page.tsx
-import { Header } from '@/components/Header/Header';
 import { Code2, Users, BookOpen } from 'lucide-react';
 import styles from './About.module.scss';
 
 export default function AboutPage() {
     return (
         <>
-            <Header />
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h1 className={styles.title}>О проекте</h1>

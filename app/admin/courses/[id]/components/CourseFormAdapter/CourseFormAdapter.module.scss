@@ -1,0 +1,84 @@
+// app/admin/courses/[id]/components/CourseFormAdapter/CourseFormAdapter.module.scss
+@use '../../../../../../styles/utils/variables' as vars;
+@use '../../../../../../styles/utils/mixins' as mix;
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    @include mix.desktop {
+        padding: 3rem 2rem;
+    };
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: vars.$text-secondary;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: vars.$transition;
+    font-size: 0.9rem;
+
+    &:hover {
+        color: vars.$text-primary;
+    };
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: vars.$text-primary;
+    margin-bottom: 0.5rem;
+
+    @include mix.mobile {
+        font-size: 2rem;
+    };
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: vars.$text-secondary;
+}
+
+.serverError {
+    background: rgba(vars.$accent-red, 0.1);
+    border: 1px solid rgba(vars.$accent-red, 0.3);
+    padding: 1rem;
+    border-radius: vars.$border-radius;
+    margin-bottom: 2rem;
+    color: vars.$accent-red;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.loading {
+    text-align: center;
+    color: vars.$text-secondary;
+    font-size: 1.1rem;
+    padding: 3rem;
+}
+
+.error {
+    text-align: center;
+    padding: 4rem 2rem;
+    
+    h2 {
+        font-size: 2rem;
+        color: vars.$accent-red;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        color: vars.$text-secondary;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+}
